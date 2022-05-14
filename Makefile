@@ -1,4 +1,4 @@
-PLANETS = 512;
+PLANETS = 2
 
 CC = g++
 
@@ -16,7 +16,7 @@ all: $(CPPEXEC)
 clean:
 	rm $(CPPEXEC)
 
-$(CPPEXEC): $(CPPMAIN) header.hpp configuration.hpp utilities.cpp
-	$(CC) $(CPPMAIN) -o $(CPPEXEC)
+$(CPPEXEC): $(CPPMAIN) header.hpp configuration.hpp utilities.cpp general.cpp
+	$(CC) $(CPPMAIN) -o $(CPPEXEC) $(CPPBUILDOPTIONS)
 
 .PHONY: all clean
