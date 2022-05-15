@@ -16,7 +16,7 @@ all: $(CPPEXEC)
 clean:
 	rm $(CPPEXEC)
 
-$(CPPEXEC): $(CPPMAIN) header.hpp configuration.hpp utilities.cpp general.cpp
+$(CPPEXEC): $(CPPMAIN) header.hpp configuration.hpp utilities.cpp general.cpp general.hpp
 	$(CC) $(CPPMAIN) -o $(CPPEXEC) $(CPPBUILDOPTIONS)
 
 .PHONY: all clean

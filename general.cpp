@@ -1,3 +1,5 @@
+#include "general.hpp"
+
 namespace general {
 	void update_accelerations (utils::planet* system, int bodies) {
 		// Look at every body in the system and update the individual accelerations.
@@ -26,7 +28,7 @@ namespace general {
 		}
 	}
 
-	void update_locations () {
+	void update_locations (utils::planet* system, int bodies, double delta) {
 		/* Finding the exact location of two bodies can be done given their initial velocities and
 		 * positions. However this cannot be done for three (or more) bodies. This is known as the
 		 * three body problem. https://en.wikipedia.org/wiki/Three-body_problem
@@ -40,7 +42,13 @@ namespace general {
 		 * similar phenomenon can be seen in a Lorenz attractor, but iirc the Lorenz attractor is
 		 * deterministic.
 		 *
-		 * The equations used in this 
+		 * The equations used in this simulation are just the kinematic equations.
+		 *  Vf = Vi + AT ==> dV = AT
+		 *  Xf = Xi + ViT + A(T ^ 2) / 2 ==> dX = ViT + A(T ^ 2)
 		 */
+
+		for (int i = 0; i < bodies; i++) {
+			
+		}
 	}
 }
