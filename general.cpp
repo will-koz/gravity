@@ -25,4 +25,22 @@ namespace general {
 			}
 		}
 	}
+
+	void update_locations () {
+		/* Finding the exact location of two bodies can be done given their initial velocities and
+		 * positions. However this cannot be done for three (or more) bodies. This is known as the
+		 * three body problem. https://en.wikipedia.org/wiki/Three-body_problem
+		 *
+		 * Or at least in general, this is a problem. There are some cases where it is solved. This
+		 * problem also extends to the general n-body problem. Fortunately, this can be estimated
+		 * given a displacement of time (this method is known as Euler's three-body problem).
+		 *
+		 * This method is not a perfect solution, but it looks realistic, and looks more realistic
+		 * as the change in time approaches 0. Actually, it is one for one as dt approaches 0. A
+		 * similar phenomenon can be seen in a Lorenz attractor, but iirc the Lorenz attractor is
+		 * deterministic.
+		 *
+		 * The equations used in this 
+		 */
+	}
 }
