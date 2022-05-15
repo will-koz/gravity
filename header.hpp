@@ -35,4 +35,9 @@ namespace utils {
 			;
 		}
 	};
+
+	namespace io {
+		void json_data_footer ();
+		void json_data_header (unsigned int seed);
+	}
 }

@@ -43,12 +43,17 @@ namespace general {
 		 * deterministic.
 		 *
 		 * The equations used in this simulation are just the kinematic equations.
+		 *  Xf = Xi + ViT + A(T ^ 2) / 2 ==> dX = ViT + A(T ^ 2) / 2
 		 *  Vf = Vi + AT ==> dV = AT
-		 *  Xf = Xi + ViT + A(T ^ 2) / 2 ==> dX = ViT + A(T ^ 2)
 		 */
 
 		for (int i = 0; i < bodies; i++) {
-			
+			system[i].position.x = system[i].position.x + (system[i].velocity.x * delta) +
+				(system[i].acclrton.x * delta * delta / 2);
+			system[i].position.y = system[i].position.y + (system[i].velocity.y * delta) +
+				(system[i].acclrton.y * delta * delta / 2);
+			system[i].velocity.x = system[i].velocity.x + (system[i].acclrton.x * delta);
+			system[i].velocity.y = system[i].velocity.y + (system[i].acclrton.y * delta);
 		}
 	}
 }

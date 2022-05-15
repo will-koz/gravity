@@ -44,4 +44,14 @@ namespace utils {
 		printf("Recent Acceleration:\n");
 		acclrton.print(1);
 	}
+
+	void io::json_data_footer () {
+		printf("]}\n"); // End data array and general object, add newline
+	}
+
+	void io::json_data_header (unsigned int seed) {
+		printf("{\"header\":{"); // Start with header object inside of general object
+		printf("\"seed\":%d", seed); // Print out seed
+		printf("}, \"data\":["); // End header object, begin data array
+	}
 }
