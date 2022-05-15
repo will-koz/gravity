@@ -18,7 +18,7 @@ PYMAIN = main.py
 all: $(CPPEXEC) $(JSONDATA) $(OUTPUTGIF)
 
 clean:
-	rm -f $(CPPEXEC) $(JSONDATA)
+	rm -f $(CPPEXEC) $(JSONDATA) $(OUTPUTGIF)
 
 $(CPPEXEC): $(CPPMAIN) header.hpp configuration.hpp utilities.cpp general.cpp general.hpp
 	rm -f $(JSONDATA) $(OUTPUTGIF)
@@ -29,6 +29,6 @@ $(JSONDATA):
 	./$(CPPEXEC) > $(JSONDATA)
 
 $(OUTPUTGIF):
-	python3 $(PYMAIN) $(OUTPUTGIF)
+	python3 $(PYMAIN) $(OUTPUTGIF) $(JSONDATA)
 
 .PHONY: all clean
