@@ -10,7 +10,7 @@ namespace utils {
 			double x;
 			double y;
 
-			void print (int tabs);
+			void print ();
 			void zero ();
 
 		vtr () {
@@ -29,7 +29,7 @@ namespace utils {
 			vtr acclrton;
 
 			void initialize ();
-			void print ();
+			void print (unsigned char has_comma);
 
 		planet () {
 			;
@@ -38,6 +38,7 @@ namespace utils {
 
 	namespace io {
 		void json_data_footer ();
-		void json_data_header (unsigned int seed);
+		void json_data_header (unsigned int seed, double bigg, unsigned int planets);
+		void json_data_dump (planet* system, int bodies, unsigned char has_comma);
 	}
 }

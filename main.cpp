@@ -17,16 +17,13 @@ int main (int argc, char** argv) {
 
 	for (int i = 0; i < PLANETS; i++) planets[i].initialize();
 
-	utils::io::json_data_header(seed);
+	utils::io::json_data_header(seed, BIGG, PLANETS);
 
-	general::update_accelerations(planets, PLANETS);
-	planets[0].print();
-	planets[1].print();
-
-	general::update_locations(planets, PLANETS, DELTA);
-
-	planets[0].print();
-	planets[1].print();
+	for (int i = 0; i < ITERATIONS; i++) {
+		general::update_accelerations(planets, PLANETS);
+		general::update_locations(planets, PLANETS, DELTA);
+		utils::io::json_data_dump(planets, PLANETS, i != ITERATIONS - 1);
+	}
 
 	utils::io::json_data_footer();
 

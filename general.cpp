@@ -38,8 +38,8 @@ namespace general {
 		 * given a displacement of time (this method is known as Euler's three-body problem).
 		 *
 		 * This method is not a perfect solution, but it looks realistic, and looks more realistic
-		 * as the change in time approaches 0. Actually, it is one for one as dt approaches 0. A
-		 * similar phenomenon can be seen in a Lorenz attractor, but iirc the Lorenz attractor is
+		 * as the change in time approaches 0. (Actually, it is one for one as dt approaches 0.) A
+		 * similar phenomenon can be seen in a Lorenz attractor, and iirc the Lorenz attractor is
 		 * deterministic.
 		 *
 		 * The equations used in this simulation are just the kinematic equations.

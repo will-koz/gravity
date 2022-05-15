@@ -1,27 +1,34 @@
+ITERATIONS = 64
 PLANETS = 2
 
 CC = g++
 
-CPPMAIN = main.cpp
 CPPEXEC = engine
 JSONDATA = data.json
+OUTPUTGIF = output.gif
 
 #---------------------------------------------------------------------------------------------------
 
-CPPBUILDOPTIONS = -DPLANETS=$(PLANETS)
+CPPMAIN = main.cpp
+CPPBUILDOPTIONS = -DITERATIONS=$(ITERATIONS) -DPLANETS=$(PLANETS)
+PYMAIN = main.py
 
 #---------------------------------------------------------------------------------------------------
 
-all: $(CPPEXEC) $(JSONDATA)
+all: $(CPPEXEC) $(JSONDATA) $(OUTPUTGIF)
 
 clean:
-	rm $(CPPEXEC) $(JSONDATA)
+	rm -f $(CPPEXEC) $(JSONDATA)
 
 $(CPPEXEC): $(CPPMAIN) header.hpp configuration.hpp utilities.cpp general.cpp general.hpp
-	rm -f $(JSONDATA)
+	rm -f $(JSONDATA) $(OUTPUTGIF)
 	$(CC) $(CPPMAIN) -o $(CPPEXEC) $(CPPBUILDOPTIONS)
 
 $(JSONDATA):
+	rm -f $(OUTPUTGIF)
 	./$(CPPEXEC) > $(JSONDATA)
+
+$(OUTPUTGIF):
+	python3 $(PYMAIN) $(OUTPUTGIF)
 
 .PHONY: all clean

@@ -15,11 +15,8 @@ namespace utils {
 		return mantissa * pow(BASE, power);
 	}
 
-	void vtr::print (int tabs) {
-		for (int i = 0; i < tabs; i++) printf("\t");
-		printf("X : %g\n", x);
-		for (int i = 0; i < tabs; i++) printf("\t");
-		printf("Y : %g\n", y);
+	void vtr::print () {
+		printf("[%0.16f, %0.16f]", x, y);
 	}
 
 	void vtr::zero () {
@@ -34,24 +31,37 @@ namespace utils {
 		velocity.y = rand() % MAX_PLANET_SPEED1D;
 	}
 
-	void planet::print () {
-		printf("\n");
-		printf("Mass : %g\n", mass);
-		printf("Position:\n");
-		position.print(1);
-		printf("Velocity:\n");
-		velocity.print(1);
-		printf("Recent Acceleration:\n");
-		acclrton.print(1);
+	void planet::print (unsigned char has_comma) {
+		printf("{\"mass\": %0.16f, \"position\":", mass);
+		position.print();
+		printf(", \"velocity\":");
+		velocity.print();
+		printf(", \"acceleration\":");
+		acclrton.print();
+		printf("}%s", (has_comma) ? ", " : "");
 	}
 
 	void io::json_data_footer () {
 		printf("]}\n"); // End data array and general object, add newline
 	}
 
-	void io::json_data_header (unsigned int seed) {
+	void io::json_data_header (unsigned int seed, double bigg, unsigned int planets) {
 		printf("{\"header\":{"); // Start with header object inside of general object
-		printf("\"seed\":%d", seed); // Print out seed
+
+		printf("\"seed\":%d, ", seed); // Print out seed
+		printf("\"G\":%0.16f, ", bigg); // print out value for G
+		printf("\"planets\":%d", planets); // print out number of planets
+
 		printf("}, \"data\":["); // End header object, begin data array
+	}
+
+	void io::json_data_dump (planet* system, int bodies, unsigned char has_comma) {
+		printf("["); // Begin array
+
+		for (int i = 0; i < bodies; i++) {
+			system[i].print(i != bodies - 1);
+		}
+
+		printf("]%s", (has_comma) ? ", " : ""); // End array
 	}
 }
