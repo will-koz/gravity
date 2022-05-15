@@ -19,6 +19,7 @@ all: $(CPPEXEC) $(JSONDATA) $(OUTPUTGIF)
 
 clean:
 	rm -f $(CPPEXEC) $(JSONDATA) $(OUTPUTGIF)
+	rm -rf __pycache__
 
 $(CPPEXEC): $(CPPMAIN) header.hpp configuration.hpp utilities.cpp general.cpp general.hpp
 	rm -f $(JSONDATA) $(OUTPUTGIF)

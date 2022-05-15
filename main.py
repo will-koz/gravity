@@ -3,8 +3,9 @@
 # Usage:
 # (python3 |./)main.py [OUTPUT] [INPUT]
 
-from PIL import Image
+from PIL import Image, ImageDraw
 import json, sys
+import conf
 
 input_location = "data.json"
 output_location = "output.gif"
@@ -25,4 +26,18 @@ with open(input_location) as file:
 
 #---------------------------------------------------------------------------------------------------
 
-print(data)
+print("Beginning to render %s images of %s planets. (Seed: %s)" % (len(data), \
+	json_obj["header"]["planets"], json_obj["header"]["seed"]))
+
+output_images = []
+count = 0
+
+for i in data:
+	# remember that count refers to the index of i, and i is the data at index count
+	output_images.append(Image.new("RGB", (conf.width, conf.height)))
+	draw = ImageDraw.draw()
+	output_images[count];
+	count += 1
+
+output_images[0].save(output_location, save_all = True, append_images = output_images[1:], \
+	duration = conf.duration, loop = conf.loop)
