@@ -26,6 +26,12 @@ with open(input_location) as file:
 
 #---------------------------------------------------------------------------------------------------
 
+def circle (draw_obj, location, radius):
+	l = [(location[0] - radius, location[1] - radius), (location[0] + radius, location[1] + radius)]
+	draw_obj.ellipse(l, fill = (255, 255, 255))
+
+#---------------------------------------------------------------------------------------------------
+
 print("Beginning to render %s images of %s planets. (Seed: %s)" % (len(data), \
 	json_obj["header"]["planets"], json_obj["header"]["seed"]))
 
@@ -35,7 +41,12 @@ count = 0
 for i in data:
 	# remember that count refers to the index of i, and i is the data at index count
 	output_images.append(Image.new("RGB", (conf.width, conf.height)))
-	draw = ImageDraw.draw()
+	draw = ImageDraw.Draw(output_images[count])
+	for j in i:
+		# Render each individual planet
+		radius = 3 # TODO
+		location = (5 * count, 5 * count)
+		circle(draw, location, radius)
 	output_images[count];
 	count += 1
 
