@@ -4,7 +4,7 @@ namespace utils {
 		double dy = a.y - b.y;
 		*xptr = dx;
 		*yptr = dy;
-		return pow((dx * dx) + (dy * dy), 0.5);
+		return hypot(dx, dy);
 	}
 
 	double random_pseudogaussian (double a, double b, int random_sign) {

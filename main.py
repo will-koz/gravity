@@ -65,6 +65,10 @@ for i in data:
 	for j in i:
 		# Render each individual planet
 		radius = 3 # TODO
+		print("X: %s, Y: %s" % (j["position"][0], j["position"][1]))
+		print("  X: %s, Y: %s" % (j["velocity"][0], j["velocity"][1]))
+		print("  X: %s, Y: %s" % (j["acceleration"][0], j["acceleration"][1]))
+		print("  M: %s" % (j["mass"]))
 		location = (map(loc_min_x, loc_max_x, j["position"][0], 0, conf.width),
 					map(loc_min_y, loc_max_y, j["position"][1], 0, conf.height))
 		circle(draw, location, radius)

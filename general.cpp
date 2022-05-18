@@ -21,8 +21,8 @@ namespace general {
 					coefficient = BIGG * system[j].mass;
 					coefficient /= pow(radius, 2);
 
-					system[i].acclrton.x -= coefficient * (dx / radius);
-					system[i].acclrton.y -= coefficient * (dy / radius);
+					system[i].acclrton.x += coefficient * (-dx / radius);
+					system[i].acclrton.y += coefficient * (-dy / radius);
 				}
 			}
 		}
