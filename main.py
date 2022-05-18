@@ -59,14 +59,16 @@ for i in data:
 			loc_min_y = j["position"][1]
 
 # Set the same scale in both directions
+loc_min = 0
+loc_max = 0
 if loc_min_x < loc_min_y:
-	loc_min_y = loc_min_x
+	loc_min = loc_min_x
 else:
-	loc_min_x = loc_min_y
+	loc_min = loc_min_y
 if loc_max_x > loc_max_y:
-	loc_max_y = loc_max_x
+	loc_max = loc_max_x
 else:
-	loc_max_x = loc_max_y
+	loc_max = loc_max_y
 
 for i in data:
 	# remember that count refers to the index of i, and i is the data at index count
@@ -79,8 +81,8 @@ for i in data:
 		print("  X: %s, Y: %s" % (j["velocity"][0], j["velocity"][1]))
 		print("  X: %s, Y: %s" % (j["acceleration"][0], j["acceleration"][1]))
 		print("  M: %s" % (j["mass"]))
-		location = (map(loc_min_x, loc_max_x, j["position"][0], 0, conf.width),
-					map(loc_min_y, loc_max_y, j["position"][1], 0, conf.height))
+		location = (map(loc_min, loc_max, j["position"][0], 0, conf.width),
+					map(loc_min, loc_max, j["position"][1], 0, conf.height))
 		circle(draw, location, radius)
 	print("Completed %s of %s." % (count + 1, len(data)))
 	count += 1
