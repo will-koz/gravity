@@ -58,6 +58,16 @@ for i in data:
 		elif j["position"][1] < loc_min_y:
 			loc_min_y = j["position"][1]
 
+# Set the same scale in both directions
+if loc_min_x < loc_min_y:
+	loc_min_y = loc_min_x
+else:
+	loc_min_x = loc_min_y
+if loc_max_x > loc_max_y:
+	loc_max_y = loc_max_x
+else:
+	loc_max_x = loc_max_y
+
 for i in data:
 	# remember that count refers to the index of i, and i is the data at index count
 	output_images.append(Image.new("RGB", (conf.width, conf.height)))
