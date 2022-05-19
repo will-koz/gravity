@@ -4,6 +4,8 @@ This brilliantly named engine simulates Newtonian motion of planetary bodies usi
 universal gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation). The
 main computations are done in C++ and the rendering is done in Python.
 
+I think I figured out the bug in main.py.
+
 ## Requirements
 
 - `g++` Compiler

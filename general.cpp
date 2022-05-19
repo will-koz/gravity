@@ -17,12 +17,12 @@ namespace general {
 
 					// TODO : collision detection?
 
-					double radius = distance(system[i].position, system[j].position, &dx, &dy);
+					double radius = distance(system[j].position, system[i].position, &dx, &dy);
 					coefficient = BIGG * system[j].mass;
-					coefficient /= pow(radius, 2);
+					coefficient /= pow(radius, 2.0);
 
-					system[i].acclrton.x += coefficient * (-dx / radius);
-					system[i].acclrton.y += coefficient * (-dy / radius);
+					system[i].acclrton.x += coefficient * (dx / radius);
+					system[i].acclrton.y += coefficient * (dy / radius);
 				}
 			}
 		}
@@ -48,10 +48,10 @@ namespace general {
 		 */
 
 		for (int i = 0; i < bodies; i++) {
-			system[i].position.x = system[i].position.x + (system[i].velocity.x * delta) +
-				(system[i].acclrton.x * delta * delta / 2);
-			system[i].position.y = system[i].position.y + (system[i].velocity.y * delta) +
-				(system[i].acclrton.y * delta * delta / 2);
+			system[i].position.x = system[i].position.x + (system[i].velocity.x * delta) ;// +
+				// (system[i].acclrton.x * delta * delta / 2);
+			system[i].position.y = system[i].position.y + (system[i].velocity.y * delta) ;//+
+				// (system[i].acclrton.y * delta * delta / 2);
 			system[i].velocity.x = system[i].velocity.x + (system[i].acclrton.x * delta);
 			system[i].velocity.y = system[i].velocity.y + (system[i].acclrton.y * delta);
 		}
