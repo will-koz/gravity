@@ -12,17 +12,17 @@ namespace general {
 					// F = GmM(r^-2)(r'), so a = GM(r^-2)(r')
 					// r' is the normalized radius vector between two points, pronounced r-hat
 
-					double dx, dy = 0.0; // Not instantaneous change, but difference
+					double dx = 0.0; double dy = 0.0; // Not instantaneous change, but difference
 					double coefficient = 0.0; // The GM(r^-2)
 
 					// TODO : collision detection?
 
-					double radius = distance(system[j].position, system[i].position, &dx, &dy);
+					double radius = distance(system[i].position, system[j].position, &dx, &dy);
 					coefficient = BIGG * system[j].mass;
 					coefficient /= pow(radius, 2.0);
 
-					system[i].acclrton.x += coefficient * (dx / radius);
-					system[i].acclrton.y += coefficient * (dy / radius);
+					system[i].acclrton.x -= coefficient * (dx / radius);
+					system[i].acclrton.y -= coefficient * (dy / radius);
 				}
 			}
 		}

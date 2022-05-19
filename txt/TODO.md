@@ -7,4 +7,4 @@ In addition to this list, you can always run `grep -r TODO`.
 - [ ] Open JSON data in Python, render data
 - [x] Add connections between engine and renderer in Makefile
 
-- [ ] Add license
+- [x] Add license

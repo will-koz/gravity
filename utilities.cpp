@@ -20,17 +20,17 @@ namespace utils {
 	}
 
 	void vtr::zero () {
-		x, y = 0.0;
+		x = 0.0; y = 0.0;
 	}
 
 	void planet::initialize () {
 		mass = random_pseudogaussian(MIN_PLANET_MASS, MAX_PLANET_MASS, 0);
 		position.x = random_pseudogaussian(MIN_PLANET_POS, MAX_PLANET_POS, 1);
 		position.y = random_pseudogaussian(MIN_PLANET_POS, MAX_PLANET_POS, 1);
-		velocity.x = rand() % MAX_PLANET_SPEED1D;
-		velocity.y = rand() % MAX_PLANET_SPEED1D;
-		// velocity.x = 0;
-		// velocity.y = 0;
+		// velocity.x = rand() % MAX_PLANET_SPEED1D;
+		// velocity.y = rand() % MAX_PLANET_SPEED1D;
+		velocity.x = 0;
+		velocity.y = 0;
 	}
 
 	void planet::print (unsigned char has_comma) {
