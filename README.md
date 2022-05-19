@@ -4,7 +4,9 @@ This brilliantly named engine simulates Newtonian motion of planetary bodies usi
 universal gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation). The
 main computations are done in C++ and the rendering is done in Python.
 
-I think I figured out the bug in main.py.
+2022-05-18: I think I figured out the bug in main.py. I think it is a problem with floating point number
+handling of this magnitude. Other than that, the force algorithm seems to work as intended in
+general.cpp.
 
 ## Requirements
 
