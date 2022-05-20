@@ -26,12 +26,15 @@ with open(input_location) as file:
 
 #---------------------------------------------------------------------------------------------------
 
-def circle (draw_obj, location, radius):
-	l = [(location[0] - radius, location[1] - radius), (location[0] + radius, location[1] + radius)]
-	draw_obj.ellipse(l, fill = (255, 255, 255))
-
 def map (a, b, t, x, y):
 	return (t - a) / (b - a) * (y - x) + x
+
+def circle (draw_obj, location, radius):
+	l = [(location[0] - radius, location[1] - radius), (location[0] + radius, location[1] + radius)]
+	color = (int(map(conf.radius_sml, conf.radius_lar, radius, conf.p_color1[0], conf.p_color2[0])),
+		int(map(conf.radius_sml, conf.radius_lar, radius, conf.p_color1[1], conf.p_color2[1])),
+		int(map(conf.radius_sml, conf.radius_lar, radius, conf.p_color1[2], conf.p_color2[2])))
+	draw_obj.ellipse(l, fill = color)
 
 #---------------------------------------------------------------------------------------------------
 
@@ -41,8 +44,10 @@ print("Beginning to render %s images of %s planets. (Seed: %s)" % (len(data), \
 output_images = []
 count = 0
 
-glo_max = 0
+glo_max = 0 # Calculate the global maximum (even through the fourth dimension)
 glo_min = 0
+mass_max = 0 # Calculate the largest and smallest masses
+mass_min = 0
 guidelines = []
 for i in data:
 	for j in i:
@@ -54,6 +59,10 @@ for i in data:
 			glo_max = j["position"][1]
 		elif j["position"][1] < glo_min:
 			glo_min = j["position"][1]
+		if j["mass"] > mass_max:
+			mass_max = j["mass"]
+		if (j["mass"] < mass_min) or (mass_min == 0):
+			mass_min = j["mass"]
 for i in range(1, conf.num_guide_lines):
 	guidelines.append(glo_min + (i * (glo_max - glo_min) / conf.num_guide_lines))
 
@@ -81,7 +90,7 @@ for i in data:
 		draw.line([0, guide_y, conf.width, guide_y], fill = conf.l_fill, width = conf.line_width)
 	for j in i:
 		# Render each individual planet
-		radius = 3 # TODO
+		radius = map(mass_max, mass_min, j["mass"], conf.radius_sml, conf.radius_lar)
 		# print("X: %s, Y: %s" % (j["position"][0], j["position"][1]))
 		# print("  X: %s, Y: %s" % (j["velocity"][0], j["velocity"][1]))
 		# print("  X: %s, Y: %s" % (j["acceleration"][0], j["acceleration"][1]))

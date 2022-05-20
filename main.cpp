@@ -13,6 +13,7 @@ utils::planet planets[PLANETS];
 int main (int argc, char** argv) {
 	// Some seeds that have looked good:
 	// unsigned int seed = 1653015088;
+	// unsigned int seed = 1653016646;
 	time_t t; // Set random seed
 	unsigned int seed = (unsigned int) time(&t);
 	srand(seed);
