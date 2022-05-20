@@ -1,5 +1,5 @@
 ITERATIONS = 1000
-PLANETS = 10
+PLANETS = 12
 
 CC = g++
 

@@ -41,39 +41,22 @@ print("Beginning to render %s images of %s planets. (Seed: %s)" % (len(data), \
 output_images = []
 count = 0
 
-loc_min_x = 0
-loc_min_y = 0
-loc_max_x = 0
-loc_max_y = 0
-
-# Find the minimum and maximum values of x and y
-for i in data:
-	for j in i:
-		if j["position"][0] > loc_max_x:
-			loc_max_x = j["position"][0]
-		elif j["position"][0] < loc_min_x:
-			loc_min_x = j["position"][0]
-		if j["position"][1] > loc_max_y:
-			loc_max_y = j["position"][1]
-		elif j["position"][1] < loc_min_y:
-			loc_min_y = j["position"][1]
-
-# Set the same scale in both directions
-loc_min = 0
-loc_max = 0
-if loc_min_x < loc_min_y:
-	loc_min = loc_min_x
-else:
-	loc_min = loc_min_y
-if loc_max_x > loc_max_y:
-	loc_max = loc_max_x
-else:
-	loc_max = loc_max_y
-
 for i in data:
 	# remember that count refers to the index of i, and i is the data at index count
 	output_images.append(Image.new("RGB", (conf.width, conf.height)))
 	draw = ImageDraw.Draw(output_images[count])
+	# Find minimum and maximum
+	loc_min = 0
+	loc_max = 0
+	for j in i:
+		if j["position"][0] > loc_max:
+			loc_max = j["position"][0]
+		elif j["position"][0] < loc_min:
+			loc_min = j["position"][0]
+		if j["position"][1] > loc_max:
+			loc_max = j["position"][1]
+		elif j["position"][1] < loc_min:
+			loc_min = j["position"][1]
 	for j in i:
 		# Render each individual planet
 		radius = 3 # TODO
