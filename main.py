@@ -41,11 +41,27 @@ print("Beginning to render %s images of %s planets. (Seed: %s)" % (len(data), \
 output_images = []
 count = 0
 
+glo_max = 0
+glo_min = 0
+guidelines = []
+for i in data:
+	for j in i:
+		if j["position"][0] > glo_max:
+			glo_max = j["position"][0]
+		elif j["position"][0] < glo_min:
+			glo_min = j["position"][0]
+		if j["position"][1] > glo_max:
+			glo_max = j["position"][1]
+		elif j["position"][1] < glo_min:
+			glo_min = j["position"][1]
+for i in range(1, conf.num_guide_lines):
+	guidelines.append(glo_min + (i * (glo_max - glo_min) / conf.num_guide_lines))
+
 for i in data:
 	# remember that count refers to the index of i, and i is the data at index count
 	output_images.append(Image.new("RGB", (conf.width, conf.height)))
 	draw = ImageDraw.Draw(output_images[count])
-	# Find minimum and maximum
+	# Find minimum and maximum for scale
 	loc_min = 0
 	loc_max = 0
 	for j in i:
@@ -57,13 +73,19 @@ for i in data:
 			loc_max = j["position"][1]
 		elif j["position"][1] < loc_min:
 			loc_min = j["position"][1]
+	# Render guiding lines
+	for j in guidelines:
+		guide_x = map(loc_min, loc_max, j, 0, conf.width)
+		guide_y = map(loc_min, loc_max, j, 0, conf.height)
+		draw.line([guide_x, 0, guide_x, conf.height], fill = conf.l_fill, width = conf.line_width)
+		draw.line([0, guide_y, conf.width, guide_y], fill = conf.l_fill, width = conf.line_width)
 	for j in i:
 		# Render each individual planet
 		radius = 3 # TODO
-		print("X: %s, Y: %s" % (j["position"][0], j["position"][1]))
-		print("  X: %s, Y: %s" % (j["velocity"][0], j["velocity"][1]))
-		print("  X: %s, Y: %s" % (j["acceleration"][0], j["acceleration"][1]))
-		print("  M: %s" % (j["mass"]))
+		# print("X: %s, Y: %s" % (j["position"][0], j["position"][1]))
+		# print("  X: %s, Y: %s" % (j["velocity"][0], j["velocity"][1]))
+		# print("  X: %s, Y: %s" % (j["acceleration"][0], j["acceleration"][1]))
+		# print("  M: %s" % (j["mass"]))
 		location = (map(loc_min, loc_max, j["position"][0], 0, conf.width),
 					map(loc_min, loc_max, j["position"][1], 0, conf.height))
 		circle(draw, location, radius)
