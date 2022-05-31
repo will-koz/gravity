@@ -5,7 +5,10 @@ universal gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal
 main computations are done in C++ and the rendering is done in Python.
 
 ```
-This program generates random particles (planets) and then uses the Newtonian equation of gravity to simulate it over time. The data is given as JSON, which can then be used as input to the renderer which is written in Python. (The render is not to scale, because seeing the planets is pretty important to the utility of the simulation.)
+This program generates random particles (planets) and then uses the Newtonian equation of gravity to
+simulate it over time. The data is given as JSON, which can then be used as input to the renderer
+which is written in Python. (The render is not to scale, because seeing the planets is pretty
+important to the utility of the simulation.)
 ```
 
 If you do a `make run`, you might not get a visually appealing animation, but I promise this uses the
