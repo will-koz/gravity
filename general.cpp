@@ -15,7 +15,12 @@ namespace general {
 					double dx = 0.0; double dy = 0.0; // Not instantaneous change, but difference
 					double coefficient = 0.0; // The GM(r^-2)
 
-					// TODO : collision detection?
+					// TODO : collision detection:
+
+					// Following pseudocode is backwards. Some values need to be determined before others
+					// For collision detection, assume all collisions are perfectly inelastic (a reasonable assumption)
+
+					// m1v1 + m2v2 = (m1 + m2)v
 
 					double radius = distance(system[i].position, system[j].position, &dx, &dy);
 					coefficient = BIGG * system[j].mass;
