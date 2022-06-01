@@ -22,6 +22,12 @@ namespace general {
 
 					// m1v1 + m2v2 = (m1 + m2)v
 
+					// Must determine if there is an actual collision if radii touch.
+					// How to determine radius ? 4pi/3*(r^3) = v, d = m/v
+
+					// This means d = 3m / (4pi(r^3)) ==>
+					// 4pi(r^3) = 3m / d ==> r = cbrt(3m / 4pid) This means density of rock should probably be specified as a constant in configuration.hpp
+
 					double radius = distance(system[i].position, system[j].position, &dx, &dy);
 					coefficient = BIGG * system[j].mass;
 					coefficient /= pow(radius, 2.0);
