@@ -32,6 +32,11 @@ namespace general {
 					// r = cbrt(3m / 4pid)
 					// density of rock should be specified as a constant in configuration.hpp
 
+					// if (i.radius + j.radius > distance) :
+					//     j = NUll // destroy second one
+					//     i.velocity = [momentum equation above]
+					//     i.mass += j.mass // They are two objects now
+
 					double radius = distance(system[i].position, system[j].position, &dx, &dy);
 					coefficient = BIGG * system[j].mass;
 					coefficient /= pow(radius, 2.0);
