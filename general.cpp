@@ -17,16 +17,20 @@ namespace general {
 
 					// TODO : collision detection:
 
-					// Following pseudocode is backwards. Some values need to be determined before others
-					// For collision detection, assume all collisions are perfectly inelastic (a reasonable assumption)
+					// Following pseudocode is backwards. Some values need to be determined before
+					// others. For collision detection, assume all collisions are perfectly
+					// inelastic (a reasonable assumption)
 
-					// m1v1 + m2v2 = (m1 + m2)v
+					// m1v1 + m2v2 = (m1 + m2)v ==>
+					// v = (m1v1 + m2v2) / (m1 + m2)
 
 					// Must determine if there is an actual collision if radii touch.
-					// How to determine radius ? 4pi/3*(r^3) = v, d = m/v
+					// 4pi / 3 * (r^3) = v, d = m / v
 
-					// This means d = 3m / (4pi(r^3)) ==>
-					// 4pi(r^3) = 3m / d ==> r = cbrt(3m / 4pid) This means density of rock should probably be specified as a constant in configuration.hpp
+					// This means d = 3m / (4 * pi * (r^3)) ==>
+					// 4 * pi * (r^3) = 3m / d ==>
+					// r = cbrt(3m / 4pid)
+					// density of rock should be specified as a constant in configuration.hpp
 
 					double radius = distance(system[i].position, system[j].position, &dx, &dy);
 					coefficient = BIGG * system[j].mass;
