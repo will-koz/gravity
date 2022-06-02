@@ -20,3 +20,5 @@
 #ifndef PLANETS
 #define PLANETS 512
 #endif
+
+// Somewhere, there needs to be a definition of the density of a planet, then on particale initiation, there needs to be an implementation of the formula used for calculating radius, so it could be used in collision detection.
