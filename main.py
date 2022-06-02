@@ -90,7 +90,7 @@ for i in data:
 		draw.line([0, guide_y, conf.width, guide_y], fill = conf.l_fill, width = conf.line_width)
 	for j in i:
 		# Render each individual planet
-		radius = map(mass_max, mass_min, j["mass"], conf.radius_sml, conf.radius_lar)
+		radius = map(mass_min, mass_max, j["mass"], conf.radius_sml, conf.radius_lar)
 		# print("X: %s, Y: %s" % (j["position"][0], j["position"][1]))
 		# print("  X: %s, Y: %s" % (j["velocity"][0], j["velocity"][1]))
 		# print("  X: %s, Y: %s" % (j["acceleration"][0], j["acceleration"][1]))
