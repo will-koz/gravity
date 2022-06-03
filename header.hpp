@@ -23,6 +23,7 @@ namespace utils {
 	class planet {
 		public:
 			double mass;
+			// int radius; // Currently unused
 
 			vtr position;
 			vtr velocity;

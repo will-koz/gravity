@@ -31,6 +31,7 @@ namespace utils {
 		// velocity.y = rand() % MAX_PLANET_SPEED1D;
 		velocity.x = 0;
 		velocity.y = 0;
+		// Calculate radius somewhere
 	}
 
 	void planet::print (unsigned char has_comma) {
