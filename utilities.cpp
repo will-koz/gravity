@@ -44,6 +44,8 @@ namespace utils {
 		printf("}%s", (has_comma) ? ", " : "");
 	}
 
+	void planet::set_radius () {}
+
 	void io::json_data_footer () {
 		printf("]}\n"); // End data array and general object, add newline
 	}

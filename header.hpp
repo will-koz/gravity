@@ -31,6 +31,7 @@ namespace utils {
 
 			void initialize ();
 			void print (unsigned char has_comma);
+			void set_radius ();
 
 		planet () {
 			;
