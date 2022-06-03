@@ -17,10 +17,8 @@
 #define MAX_PLANET_POS 11
 #define MAX_PLANET_SPEED1D 10000
 
+#define PLANET_DENSITY 5514 // Density of Earth in kg/m3, currently unused
+
 #ifndef PLANETS
 #define PLANETS 512
 #endif
-
-// Somewhere, there needs to be a definition of the density of a planet, then on particale
-// initiation, there needs to be an implementation of the formula used for calculating radius, so it
-// could be used in collision detection.
