@@ -8,5 +8,5 @@ p_color2 = (255, 237, 24)
 radius_sml = 2
 radius_lar = 5
 
-height = 256
-width = 256
+height = 800
+width = 800
